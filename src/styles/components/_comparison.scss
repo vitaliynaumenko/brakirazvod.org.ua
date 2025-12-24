@@ -1,0 +1,359 @@
+// ==========================================================================
+// Comparison Component - From Figma Frame 1171275130
+// Mobile-first approach following project rules
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.comparison {
+  max-width: 100%;
+  padding: spacing(9) spacing(5);
+
+  &__header-wrapper {
+    @include respond-to(xl) {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: spacing(6);
+      margin-bottom: 115px;
+    }
+  }
+
+  &__title {
+    margin-bottom: spacing(6);
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: typography(font-size-3xl);
+    line-height: 110%;
+    // leading-trim and text-edge are draft CSS properties.
+    // Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+    leading-trim: both;
+    text-edge: cap;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #151515;
+
+    @include respond-to(xl) {
+      margin-bottom: 0;
+      max-width: 1000px;
+      font-size: 86px;
+      text-align: left;
+      flex: 1;
+    }
+  }
+
+  &__header {
+    display: none;
+
+    @include respond-to(xl) {
+      display: block;
+      flex-shrink: 0;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto spacing(6);
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    border: 1px solid rgba(21, 21, 21, 0.2);
+    border-radius: radius(2xl);
+    overflow: hidden;
+    font-family: typography(font-family-primary);
+
+    @include respond-to(xl) {
+      display: none;
+    }
+  }
+
+  &__header-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-column: 1 / -1;
+  }
+
+  &__body {
+    display: contents;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-column: 1 / -1;
+    gap: 0;
+    padding: 0;
+
+    &:nth-child(even) {
+      background-color: color(gray-50);
+    }
+
+    &:hover {
+      background-color: color(gray-100);
+    }
+  }
+
+  &__header-cell {
+    display: flex;
+    align-items: center;
+    gap: spacing(2);
+    padding: spacing(3);
+    text-align: left;
+    border-right: 1px solid rgba(21, 21, 21, 0.2);
+    border-bottom: 1px solid rgba(21, 21, 21, 0.2);
+    font-weight: typography(font-weight-semibold);
+    font-size: typography(font-size-sm);
+    color: color(black);
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:nth-child(1) {
+      font-family: typography(font-family-primary);
+      font-style: normal;
+      font-weight: typography(font-weight-semibold);
+      font-size: typography(font-size-xs);
+      line-height: typography(font-size-13);
+      // leading-trim and text-edge are draft CSS properties.
+      // Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+      leading-trim: both;
+      text-edge: cap;
+      font-feature-settings: 'salt' on;
+      color: color(gray-500);
+    }
+
+    &:nth-child(2) {
+      width: 74px;
+      height: 99px;
+      justify-content: center;
+      font-family: typography(font-family-primary);
+      font-style: normal;
+      font-weight: typography(font-weight-semibold);
+      font-size: typography(font-size-xs);
+      line-height: typography(font-size-13);
+      // leading-trim and text-edge are draft CSS properties.
+      // Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+      leading-trim: both;
+      text-edge: cap;
+      font-feature-settings: 'salt' on;
+      color: color(gray-500);
+    }
+
+    &:nth-child(3) {
+      width: 74px;
+      height: 99px;
+      justify-content: center;
+    }
+  }
+
+  &__row:last-child &__feature {
+    border-bottom: none;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    padding: spacing(3);
+    border-right: 1px solid rgba(21, 21, 21, 0.2);
+    border-bottom: 1px solid rgba(21, 21, 21, 0.2);
+    font-family: typography(font-family-primary);
+    font-style: normal;
+    font-weight: typography(font-weight-semibold);
+    font-size: typography(font-size-sm);
+    line-height: 15px;
+    font-feature-settings: 'salt' on;
+    color: color(black);
+  }
+
+  &__badge-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 74px;
+    padding: spacing(3);
+    border-right: 1px solid rgba(21, 21, 21, 0.2);
+    border-bottom: 1px solid rgba(21, 21, 21, 0.2);
+    gap: 0;
+    text-align: center;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &__row:last-child &__badge-cell {
+    border-bottom: none;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    border-radius: radius(full);
+    font-family: typography(font-family-primary);
+    font-style: normal;
+    font-weight: typography(font-weight-medium);
+    font-size: typography(font-size-md);
+    line-height: typography(font-size-xl);
+    font-feature-settings: 'salt' on;
+    letter-spacing: typography(letter-spacing-normal);
+    color: color(black);
+
+    &--minus {
+      background-color: color(accent-pink);
+    }
+
+    &--plus {
+      width: 32px;
+      height: 32px;
+      background: color(accent-mint);
+      border: 1px solid rgba(21, 21, 21, 0.2);
+      border-radius: radius(2xl);
+      font-size: typography(font-size-lg);
+      line-height: 22px;
+      // leading-trim and text-edge are draft CSS properties.
+      // Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+      leading-trim: both;
+      text-edge: cap;
+      color: color(black);
+    }
+  }
+
+  &__btn {
+    @include flex-center;
+    width: 100%;
+    max-width: 355px;
+    height: 56px;
+    margin: 0 auto;
+    padding: spacing(5);
+    background-color: color(black);
+    border-radius: radius(md);
+    font-family: typography(font-family-primary);
+    font-size: typography(font-size-xl);
+    font-weight: typography(font-weight-medium);
+    line-height: 1.44em;
+    color: color(white);
+    cursor: pointer;
+    @include transition(background-color, transform);
+
+    &:hover {
+      background-color: color(dark);
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      @include focus-outline;
+    }
+
+    @include respond-to(xl) {
+      display: none;
+    }
+  }
+
+  &__header &__btn {
+    display: none;
+
+    @include respond-to(xl) {
+      @include flex-center;
+      display: flex;
+      width: 353px;
+      height: 56px;
+      min-width: auto;
+      max-width: none;
+      margin: 0;
+      background: #151515;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__table-desktop {
+    display: none;
+
+    @include respond-to(xl) {
+      display: flex;
+      border: 1px solid #CCCCCC;
+      border-radius: 20px;
+    }
+  }
+
+  &__table-block {
+    display: block;
+    width: 50%;
+    border-right: 1px solid #CCCCCC;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &__table-block-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: spacing(4);
+    font-family: 'Inter Tight';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    // leading-trim and text-edge are draft CSS properties.
+    // Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+    leading-trim: both;
+    text-edge: cap;
+    font-feature-settings: 'salt' on;
+    color: #9A9A9A;
+  }
+
+  &__table-block:nth-child(2) &__table-block-title {
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+  }
+
+  &__table-block-content {
+    display: block;
+    max-width: 90%;
+    margin: 0 auto;
+
+    @include respond-to(xl) {
+      padding-top: 45px;
+      padding-bottom: 45px;
+    }
+  }
+
+  &__table-block-item {
+    display: flex;
+    align-items: center;
+    gap: spacing(2);
+    padding: spacing(3) 0;
+    font-family: typography(font-family-primary);
+    font-style: normal;
+    font-weight: typography(font-weight-semibold);
+    font-size: typography(font-size-sm);
+    line-height: 15px;
+    font-feature-settings: 'salt' on;
+    color: color(black);
+
+    @include respond-to(xl) {
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 27px;
+      // leading-trim and text-edge are draft CSS properties.
+      // Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+      leading-trim: both;
+      text-edge: cap;
+      font-feature-settings: 'salt' on;
+      color: #151515;
+    }
+  }
+}
+
+

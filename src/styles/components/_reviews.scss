@@ -1,0 +1,266 @@
+// ==========================================================================
+// Reviews Component - From Figma
+// Mobile-first approach following project rules
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.reviews {
+  position: relative;
+  padding: spacing(9) spacing(0);
+  background-color: color(dark);
+  overflow: hidden;
+
+  @include respond-to(xl) {
+    padding-bottom: 150px;
+  }
+
+  // Light blue vertical stripes on edges
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: rgba(230, 234, 239, 0.3);
+    z-index: 0;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 spacing(6);
+    font-family: typography(font-family-primary);
+    font-style: normal;
+    font-weight: typography(font-weight-semibold);
+    font-size: 28px;
+    line-height: 90%;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: color(white);
+
+    @include respond-to(md) {
+      font-size: 44px;
+    }
+
+    @include respond-to(xl) {
+      font-size: 60px;
+    }
+
+    @include respond-to(xxl) {
+      font-size: typography(font-size-86);
+      line-height: 90%;
+    }
+  }
+
+  &__subtitle {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 spacing(6);
+    font-family: typography(font-family-primary);
+    font-style: normal;
+    font-weight: typography(font-weight-semibold);
+    font-size: 20px;
+    line-height: 90%;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: color(white);
+
+    @include respond-to(md) {
+      font-size: 24px;
+    }
+
+    @include respond-to(xl) {
+      font-size: 28px;
+    }
+
+    @include respond-to(xxl) {
+      font-size: typography(font-size-32);
+      line-height: 90%;
+    }
+  }
+
+  &__list {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    max-width: 355px;
+
+    @include respond-to(sm) {
+      max-width: 100%;
+    }
+
+    @include respond-to(xl) {
+      .swiper-slide {
+        margin-right: spacing(1); // 4px
+      }
+    }
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: spacing(6) spacing(6) spacing(6) spacing(8);
+    gap: spacing(2);
+    width: 343px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: color(white);
+    border-radius: radius(md);
+    min-height: 254px;
+
+    @include respond-to(sm) {
+      width: 100%;
+      padding: spacing(8) spacing(8) spacing(8) spacing(12);
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: spacing(4);
+    width: 100%;
+    margin-bottom: spacing(1);
+  }
+
+  &__card-avatar {
+    flex-shrink: 0;
+    width: 62px;
+    height: 62px;
+    background-color: color(gray-300);
+    border-radius: radius(full);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 62"><circle cx="31" cy="31" r="31" fill="%23EAEAEA"/></svg>');
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__card-info {
+    display: flex;
+    flex-direction: column;
+    gap: spacing(1);
+    flex: 1;
+  }
+
+  &__card-name {
+    font-family: font-family(primary);
+    font-style: normal;
+    font-weight: font-weight(semibold);
+    font-size: font-size(17);
+    line-height: line-height(relaxed);
+    color: color(text-primary);
+  }
+
+  &__card-rating {
+    font-size: font-size(md);
+    line-height: 1;
+    color: color(accent-yellow);
+    letter-spacing: 2px;
+  }
+
+  &__card-text {
+    width: 100%;
+    font-family: font-family(primary);
+    font-style: normal;
+    font-weight: font-weight(medium);
+    font-size: font-size(base);
+    line-height: 1.5em;
+    letter-spacing: letter-spacing(normal);
+    color: color(text-primary);
+    margin: 0;
+  }
+
+  &__card-flag {
+    position: absolute;
+    top: spacing(4);
+    right: spacing(4);
+    font-size: font-size(2xl);
+    line-height: 1;
+  }
+
+  &__nav-btn {
+    @include button-reset;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 0.7px solid color(primary);
+    border-radius: radius(md);
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      border-top: 2px solid color(primary);
+      border-right: 2px solid color(primary);
+    }
+
+    &:hover {
+      background: rgba(color(primary), 0.9);
+
+      &::after {
+        border-top-color: color(black);
+        border-right-color: color(black);
+      }
+    }
+
+    &:active {
+      &::after {
+        border-top-color: color(black);
+        border-right-color: color(black);
+      }
+    }
+
+    &:focus-visible {
+      @include focus-outline(color(primary));
+    }
+
+    &--prev {
+      left: spacing(2);
+
+      &::after {
+        transform: translate(-40%, -50%) rotate(-135deg);
+      }
+    }
+
+    &--next {
+      right: spacing(2);
+
+      &::after {
+        transform: translate(-60%, -50%) rotate(45deg);
+      }
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    @include respond-to(sm) {
+      &--prev {
+        left: spacing(4);
+      }
+
+      &--next {
+        right: spacing(4);
+      }
+    }
+  }
+}

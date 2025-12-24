@@ -1,0 +1,251 @@
+// ==========================================================================
+// Contact Component - Безкоштовна консультація section
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.contact {
+  max-width: 100%;
+  padding: spacing(9) spacing(5);
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: spacing(6);
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__arrow-wrapper {
+    display: none;
+  }
+
+  &__logo {
+    display: inline-block;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border: 0.73px solid color(primary-darker);
+    border-radius: radius(base);
+  }
+
+  &__logo-p,
+  &__logo-o {
+    position: absolute;
+    font-family: typography(font-family-script);
+    font-size: typography(font-size-24); // 24px - Figma exact
+    font-weight: typography(font-weight-medium);
+    line-height: 0.94em;
+    letter-spacing: -0.03em;
+    color: color(primary-darker);
+  }
+
+  &__logo-p {
+    top: 6px;
+    left: 7px;
+  }
+
+  &__logo-o {
+    top: 15px;
+    left: 15px;
+  }
+
+  &__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: spacing(1);
+    margin-bottom: spacing(4);
+    font-family: typography(font-family-primary);
+    font-size: typography(font-size-6xl); // 44px
+    font-weight: typography(font-weight-semibold);
+    line-height: typography(line-height-normal);
+    color: color(black);
+  }
+
+  &__hint {
+    margin-bottom: spacing(1);
+    text-align: left;
+    font-family: typography(font-family-primary);
+    font-size: typography(font-size-xs); // 11px
+    font-weight: typography(font-weight-normal);
+    line-height: typography(line-height-normal);
+    color: color(text-secondary);
+  }
+
+  &__phone {
+    display: block;
+    margin-bottom: spacing(5);
+    text-align: left;
+    font-family: 'Inter Tight', typography(font-family-primary);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36.7733px;
+    line-height: 110%; // or 40px
+    color: #151515;
+  }
+
+  &__dotted-line {
+    display: none;
+  }
+
+  &__instruction {
+    display: none;
+  }
+
+  &__socials {
+    display: flex;
+    justify-content: center;
+    gap: spacing(3);
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 94px;
+    height: 94px;
+    border: 1.45px solid color(gray-300);
+    border-radius: 22px;
+    background-size: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include transition(border-color, background-color);
+
+    &:hover {
+      border-color: color(primary);
+      background-color: rgba(228, 196, 111, 0.05);
+    }
+  }
+
+  @include respond-to(xl) {
+    padding: spacing(12) spacing(8);
+
+    &__wrapper {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: spacing(10);
+      position: relative;
+    }
+
+    &__left {
+      flex: 0 0 auto;
+      width: 50%;
+      max-width: 600px;
+    }
+
+    &__right {
+      flex: 1;
+      position: relative;
+    }
+
+    &__arrow-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: spacing(8);
+      margin-bottom: spacing(10);
+    }
+
+    &__title {
+      display: block;
+      font-size: 82px;
+      margin-bottom: 75px;
+    }
+
+    &__phone {
+      margin-bottom: 75px;
+    }
+
+    &__dotted-line {
+      display: block;
+      position: absolute;
+      bottom: spacing(8);
+      left: 0;
+      width: calc(100% + 40px);
+      height: 1px;
+      background-image: repeating-linear-gradient(
+        to right,
+        #87CEEB 0,
+        #87CEEB 4px,
+        transparent 4px,
+        transparent 8px
+      );
+      background-size: 8px 1px;
+
+      &::after {
+        content: '×';
+        position: absolute;
+        right: -24px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: typography(font-size-lg);
+        font-weight: typography(font-weight-normal);
+        color: #87CEEB;
+        line-height: 1;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    &__instruction {
+      display: block;
+      margin-bottom: 0;
+      font-family: 'Inter Tight', typography(font-family-primary);
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 110%;
+      color: #151515;
+      max-width: 500px;
+    }
+  }
+}
+
+// Socials Row
+.socials-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: spacing(2);
+  margin-bottom: spacing(6);
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 94px;
+    height: 94px;
+    border: 1.45px solid color(gray-300);
+    border-radius: 22px;
+    @include transition(border-color, background-color);
+
+    img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+    }
+
+    &:hover {
+      border-color: color(primary);
+      background-color: rgba(228, 196, 111, 0.05);
+    }
+  }
+
+  @include respond-to(xl) {
+    justify-content: flex-start;
+  }
+}
+

@@ -1,0 +1,245 @@
+// ==========================================================================
+// Swiper Base Styles
+// ==========================================================================
+// Базові стилі для кастомізації Swiper слайдерів
+// Імпортуй цей файл в main.scss
+
+@use '../abstracts' as *;
+
+// ==========================================================================
+// Variables (using design system colors)
+// ==========================================================================
+
+$swiper-pagination-color: color(primary-dark) !default;
+$swiper-pagination-bullet-size: 8px !default;
+$swiper-pagination-bullet-inactive-color: rgba(color(black), 0.2) !default;
+$swiper-pagination-bullet-inactive-opacity: 1 !default;
+$swiper-pagination-bullet-horizontal-gap: 6px !default;
+
+$swiper-navigation-size: 44px !default;
+$swiper-navigation-color: color(primary-dark) !default;
+
+$swiper-scrollbar-bg-color: rgba(color(black), 0.1) !default;
+$swiper-scrollbar-drag-bg-color: rgba(color(black), 0.5) !default;
+
+// ==========================================================================
+// Base Swiper Container
+// ==========================================================================
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+// ==========================================================================
+// Pagination Customization
+// ==========================================================================
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $swiper-pagination-bullet-horizontal-gap;
+}
+
+.swiper-pagination-bullet {
+  width: $swiper-pagination-bullet-size;
+  height: $swiper-pagination-bullet-size;
+  background-color: $swiper-pagination-bullet-inactive-color;
+  border-radius: 50%;
+  opacity: $swiper-pagination-bullet-inactive-opacity;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: rgba($swiper-pagination-color, 0.5);
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $swiper-pagination-color;
+  transform: scale(1.2);
+}
+
+// Dynamic bullets
+.swiper-pagination-bullets-dynamic {
+  .swiper-pagination-bullet {
+    transform: scale(0.66);
+
+    &-active {
+      transform: scale(1);
+    }
+
+    &-active-main {
+      transform: scale(1);
+    }
+
+    &-active-prev,
+    &-active-next {
+      transform: scale(0.8);
+    }
+  }
+}
+
+// ==========================================================================
+// Navigation Arrows
+// ==========================================================================
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $swiper-navigation-size;
+  height: $swiper-navigation-size;
+  margin-top: calc($swiper-navigation-size / -2);
+  border: 1px solid $swiper-navigation-color;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+
+  &::after {
+    font-size: 14px;
+    font-weight: 600;
+    color: $swiper-navigation-color;
+    transition: color 0.3s ease;
+  }
+
+  &:hover {
+    background-color: $swiper-navigation-color;
+
+    &::after {
+      color: color(white);
+    }
+  }
+
+  &.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.swiper-button-prev {
+  left: 10px;
+
+  &::after {
+    content: '←';
+  }
+}
+
+.swiper-button-next {
+  right: 10px;
+
+  &::after {
+    content: '→';
+  }
+}
+
+// ==========================================================================
+// Scrollbar
+// ==========================================================================
+
+.swiper-scrollbar {
+  position: relative;
+  border-radius: 10px;
+  background: $swiper-scrollbar-bg-color;
+
+  .swiper-scrollbar-drag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 10px;
+    background: $swiper-scrollbar-drag-bg-color;
+  }
+}
+
+// Horizontal scrollbar
+.swiper-scrollbar-horizontal {
+  height: 4px;
+}
+
+// Vertical scrollbar
+.swiper-scrollbar-vertical {
+  width: 4px;
+}
+
+// ==========================================================================
+// Slide Styles
+// ==========================================================================
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+
+  // Auto width for freeMode
+  &.swiper-slide-auto {
+    width: auto;
+  }
+}
+
+// ==========================================================================
+// Effects
+// ==========================================================================
+
+// Fade effect
+.swiper-fade {
+  .swiper-slide {
+    pointer-events: none;
+    transition-property: opacity;
+
+    &-active {
+      pointer-events: auto;
+    }
+  }
+}
+
+// Cards effect
+.swiper-cards {
+  overflow: visible;
+
+  .swiper-slide {
+    overflow: visible;
+    transform-origin: center bottom;
+    backface-visibility: hidden;
+  }
+}
+
+// ==========================================================================
+// Accessibility
+// ==========================================================================
+
+.swiper-notification {
+  position: absolute;
+  z-index: -1000;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+// ==========================================================================
+// Loading State
+// ==========================================================================
+
+.swiper--loading {
+  .swiper-slide {
+    opacity: 0;
+  }
+}
+
+.swiper--loaded {
+  .swiper-slide {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+}
+

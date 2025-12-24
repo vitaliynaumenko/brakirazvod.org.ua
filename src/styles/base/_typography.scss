@@ -1,0 +1,36 @@
+// ==========================================================================
+// Typography - Base typography styles
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+body {
+  font-family: typography(font-family-primary);
+  font-size: typography(font-size-md);
+  font-weight: typography(font-weight-normal);
+  line-height: typography(line-height-relaxed);
+  color: color(text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: typography(font-weight-semibold);
+  line-height: typography(line-height-normal);
+  margin: 0;
+}
+
+// Note: Specific font sizes for headings are defined in component classes
+// to avoid specificity conflicts with BEM methodology
+
+p {
+  margin-bottom: spacing(4);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+

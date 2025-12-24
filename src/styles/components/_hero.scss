@@ -1,0 +1,335 @@
+// ==========================================================================
+// Hero Section - Mobile First (375px base from Figma)
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: color(hero-dark);
+  padding: spacing(4) spacing(4) spacing(6);
+
+  // Images container
+  &__images {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+
+    picture {
+      @include absolute-fill;
+      display: block;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  // Content
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: spacing(6);
+    margin-top: 20vh;
+    margin-bottom: spacing(8);
+
+    @include respond-to(sm) {
+      margin-top: 22vh;
+    }
+
+    @include respond-to(md) {
+      margin-top: 18vh;
+    }
+
+    @include respond-to(lg) {
+      margin-top: 17vh;
+    }
+
+    @include respond-to(xl) {
+      margin-top: auto;
+    }
+  }
+
+  &__title {
+    font-family: font-family(primary);
+    font-size: font-size(4xl);
+    font-weight: font-weight(semibold);
+    line-height: line-height(snug);
+    letter-spacing: letter-spacing(hero);
+    text-align: center;
+    color: color(white);
+    margin: 0;
+
+    br {
+      display: block;
+    }
+  }
+
+  &__quote {
+    font-family: font-family(primary);
+    font-size: font-size(md);
+    font-weight: font-weight(medium);
+    line-height: line-height(normal);
+    text-align: center;
+    color: color(white);
+    margin: 0;
+  }
+
+  // Buttons
+  &__buttons {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: spacing(3);
+    margin-bottom: spacing(6);
+  }
+
+  &__btn {
+    @include button-reset;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: spacing(2);
+    width: 270px;
+    height: 53px;
+    padding: 17px 44px;
+    border-radius: radius(md);
+    font-family: font-family(primary);
+    font-size: font-size(base);
+    font-weight: font-weight(semibold);
+    line-height: line-height(tight);
+    text-align: center;
+    transition: all transition(base);
+    cursor: pointer;
+
+
+    &--secondary {
+      background: color(primary);
+      color: color(black);
+      border: none;
+
+      &:hover {
+        background: color(primary-dark);
+      }
+    
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+
+    &--primary {
+      width: 225px;
+      height: 60px;
+      padding: 17px 12px;
+      gap: 31px;
+      background: transparent;
+      color: color(white);
+      border-radius: radius(base);
+
+      svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        transition: transform transition(base);
+      }
+
+      &:hover {
+        background: rgba(228, 196, 111, 0.1);
+
+        svg {
+          transform: translateX(4px);
+        }
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  // Bottom button (phone)
+  &__bottom-btn {
+    @include button-reset;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: spacing(3);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    padding: 24px 59.6944px;
+    background: color(gray-100);
+    border: 1px solid color(primary);
+    border-radius: radius(md) radius(md) 0 0;
+    transition: all transition(base);
+    cursor: pointer;
+    z-index: 100;
+
+    span {
+      font-family: font-family(primary);
+      font-style: normal;
+      font-weight: font-weight(semibold);
+      font-size: font-size(17);
+      line-height: line-height(normal);
+      color: color(text-primary);
+    }
+
+    &:hover {
+      background: color(white);
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
+
+    @include respond-to(xl) {
+      display: none;
+    }
+  }
+
+  &__bottom-btn-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  // Scroll indicator (hidden on mobile)
+  &__scroll {
+    display: none;
+  }
+
+  // Desktop styles
+  @include respond-to(xl) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: spacing(12) spacing(20);
+    min-height: 1000px;
+
+    &__images {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+
+      picture {
+        @include absolute-fill;
+        display: block;
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &__content {
+      width: 75%;
+      max-width: 1084px;
+      margin-top: 0;
+      margin-bottom: 0;
+      gap: spacing(10);
+    }
+
+    &__title {
+      font-size: font-size(80);
+      font-weight: font-weight(semibold);
+      line-height: line-height(tight);
+      letter-spacing: letter-spacing(hero);
+      text-align: left;
+    }
+
+    &__quote {
+      font-size: font-size(3xl);
+      font-weight: font-weight(medium);
+      line-height: line-height(normal);
+      text-align: left;
+    }
+
+    &__buttons {
+      position: absolute;
+      left: spacing(20);
+      bottom: spacing(12);
+      z-index: 2;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: spacing(4);
+      margin-bottom: 0;
+    }
+
+    &__btn {
+      width: auto;
+      min-width: 200px;
+      height: 64px;
+      font-size: font-size(md);
+    }
+
+    &__bottom-btn {
+      display: none;
+    }
+
+    &__scroll {
+      @include flex-center;
+      gap: spacing(2);
+      position: absolute;
+      bottom: 80px;
+      right: 100px;
+      color: color(white);
+      font-family: font-family(primary);
+      font-size: font-size(sm);
+      font-weight: font-weight(normal);
+      opacity: 0.7;
+      animation: scrollBounce 2s infinite;
+    }
+
+    &__scroll-icon {
+      font-size: font-size(xl);
+      transform: rotate(90deg);
+    }
+  }
+}
+
+@keyframes scrollBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+

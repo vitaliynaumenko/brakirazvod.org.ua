@@ -1,0 +1,28 @@
+// ==========================================================================
+// Main SCSS - Entry point following 7-1 Pattern
+// ==========================================================================
+
+// Abstracts - Variables, functions, mixins (no CSS output)
+@use 'abstracts';
+
+// Base - Reset, typography, base elements
+@use 'base';
+
+// Components - UI components
+@use 'components';
+
+// Layout (if needed)
+// @use 'layout';
+
+// Global styles
+body {
+  min-height: 100vh;
+  background-color: abstracts.color(white);
+}
+
+// Main container - Mobile First approach
+main {
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+}

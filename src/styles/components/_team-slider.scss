@@ -1,0 +1,165 @@
+// ==========================================================================
+// Team Slider Component
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.team-slider {
+  position: relative;
+  padding: 0 20px;
+
+  @include respond-to(xl) {
+    padding: 0;
+    width: 100%;
+
+    .swiper-wrapper {
+      width: 100%;
+    }
+  }
+
+
+  &__card {
+    position: relative;
+    width: 100%;
+    height: 346px;
+    border-radius: radius(md);
+    @include respond-to(xl) {
+      height: 620px;
+      border-radius: radius(2xl);
+    }
+
+    &:hover {
+      .team-slider__overlay {
+        opacity: .6;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/images/member.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: radius(md);
+
+    @include respond-to(xl) {
+      border-radius: radius(2xl);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 50px;
+    background: linear-gradient(0deg, rgba(color(black), 0.6), rgba(color(black), 0.6));
+    backdrop-filter: blur(30px);
+    border-radius: radius(md);
+    opacity: 0;
+    visibility: hidden;
+    @include transition(opacity, visibility);
+
+    @include respond-to(xl) {
+      border-radius: 20px;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    width: 60px;
+    height: 60px;
+
+  }
+
+
+  &__name {
+    width: 100%;
+    max-width: 100%;
+    font-family: font-family(primary);
+    font-style: normal;
+    font-weight: font-weight(semibold);
+    font-size: font-size(6xl);
+    line-height: 1;
+    letter-spacing: letter-spacing(tight);
+    text-transform: uppercase;
+    color: color(gray-200);
+    text-align: left;
+  }
+
+  &__nav-btn {
+    @include button-reset;
+    position: absolute;
+    bottom: 20px;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 0.7px solid color(primary);
+    border-radius: radius(md);
+    cursor: pointer;
+    z-index: 10;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      border-top: 2px solid color(primary);
+      border-right: 2px solid color(primary);
+    }
+
+    &:hover {
+      background: rgba(color(primary), 0.9);
+
+      &::after {
+        border-top-color: color(black);
+        border-right-color: color(black);
+      }
+    }
+
+    &:active {
+      &::after {
+        border-top-color: color(black);
+        border-right-color: color(black);
+      }
+    }
+
+    &:focus-visible {
+      @include focus-outline(color(primary));
+    }
+
+    &--prev {
+      left: 50%;
+      transform: translateX(calc(-100% - 8px));
+
+      &::after {
+        transform: translate(-40%, -50%) rotate(-135deg);
+      }
+    }
+
+    &--next {
+      left: 50%;
+      transform: translateX(8px);
+
+      &::after {
+        transform: translate(-60%, -50%) rotate(45deg);
+      }
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+}
+

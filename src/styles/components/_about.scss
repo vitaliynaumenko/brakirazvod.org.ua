@@ -1,0 +1,207 @@
+// ==========================================================================
+// Abroad Component - From Figma Frame 1171275125
+// Mobile-first approach following project rules
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.abroad {
+  padding-top: 3.75rem; // 60px
+}
+
+.abroad__card {
+  width: 100%;
+  max-width: 22.0625rem; // 353px
+  margin: 0 auto;
+  padding: 2.5rem 1.625rem 1.25rem; // 40px 26px 20px
+  background-color: color(gray-100);
+  border-radius: radius(xl);
+
+  @include respond-to(sm) {
+    max-width: 24rem; // 384px
+    padding: 2.5rem 1.75rem 1.25rem; // 40px 28px 20px
+  }
+
+  @include respond-to(md) {
+    max-width: 28rem; // 448px
+    padding: 2.75rem 2rem 1.5rem; // 44px 32px 24px
+  }
+
+  @include respond-to(lg) {
+    max-width: 35rem; // 560px
+    padding: 2.75rem 2.25rem 1.5rem; // 44px 36px 24px
+  }
+
+  @include respond-to(xl) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: calc(100% - 40px);
+    width: 100%;
+    padding: 2.75rem 1.9375rem; // 44px 31px
+    gap: 1.625rem; // 26px
+    min-height: 9rem; // 144px
+  }
+
+  @include respond-to(xxl) {
+    max-width: 87.5rem; // 1400px
+  }
+
+  @include respond-to(xxxl) {
+    max-width: 100rem; // 1600px
+  }
+
+  @include respond-to(xxxxl) {
+    max-width: 108.5625rem; // 1737px
+  }
+}
+
+.abroad__title {
+  margin-bottom: spacing(6);
+  font-family: typography(font-family-primary);
+  font-size: typography(font-size-3xl);
+  font-weight: typography(font-weight-semibold);
+  line-height: typography(line-height-tight);
+  letter-spacing: typography(letter-spacing-normal);
+  text-align: center;
+  color: color(black);
+
+  @include respond-to(xl) {
+    margin-bottom: 0;
+    text-align: left;
+    max-width: 14.375rem; // 230px
+  }
+}
+
+.abroad__divider {
+  width: 100%;
+  max-width: 17.8125rem; // 285px
+  height: 0.0625rem; // 1px
+  margin: 0 auto 2.1875rem; // 35px
+  background-color: color(primary);
+
+  @include respond-to(sm) {
+    max-width: 18.75rem; // 300px
+  }
+
+  @include respond-to(md) {
+    max-width: 20rem; // 320px
+  }
+
+  @include respond-to(lg) {
+    max-width: 22rem; // 352px
+  }
+
+  @include respond-to(xl) {
+    width: 0.0625rem; // 1px
+    height: auto;
+    max-width: none;
+    margin: 0;
+    flex-shrink: 0;
+  }
+}
+
+.abroad__list {
+  margin-bottom: 2rem; // 39px
+ 
+
+  @include respond-to(sm) {
+    margin-bottom: 2.5rem; // 40px
+  }
+
+  @include respond-to(md) {
+    margin-bottom: 2.625rem; // 42px
+  }
+
+  @include respond-to(lg) {
+    margin-bottom: 2.75rem; // 44px
+  }
+
+  @include respond-to(xl) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: spacing(6);
+    margin-bottom: 0;
+    flex: 1;
+    text-align: left;
+  }
+}
+
+.abroad__item {
+  padding: 0.625rem 0; // 10px
+  font-family: typography(font-family-primary);
+  font-size: typography(font-size-2xl);
+  font-weight: typography(font-weight-medium);
+  line-height: 1.03em;
+  letter-spacing: typography(letter-spacing-normal);
+  color: color(black);
+
+  @include respond-to(sm) {
+    padding: 0.6875rem 0; // 11px
+  }
+
+  @include respond-to(md) {
+    padding: 0.75rem 0; // 12px
+  }
+
+  @include respond-to(lg) {
+    padding: 0.8125rem 0; // 13px
+  }
+
+  @include respond-to(xl) {
+    padding: 0;
+    white-space: nowrap;
+  }
+}
+
+.abroad__btn {
+  @include flex-center;
+  width: 100%;
+  max-width: 18.8125rem; // 301px
+  height: 3.5rem; // 56px
+  padding: 1.125rem 2.8125rem; // 18px 45px
+  margin: 0 auto;
+  background-color: color(primary);
+  border-radius: radius(md);
+  font-family: typography(font-family-primary);
+  font-size: typography(font-size-lg);
+  font-weight: typography(font-weight-semibold);
+  line-height: typography(line-height-tight);
+  letter-spacing: typography(letter-spacing-normal);
+  color: color(black);
+  cursor: pointer;
+  @include transition(background-color, transform);
+
+  @include respond-to(sm) {
+    max-width: 19.5rem; // 312px
+    height: 3.625rem; // 58px
+  }
+
+  @include respond-to(md) {
+    max-width: 20rem; // 320px
+    height: 3.75rem; // 60px
+  }
+
+  @include respond-to(lg) {
+    max-width: 20.5rem; // 328px
+  }
+
+  @include respond-to(xl) {
+    max-width: none;
+    width: auto;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background-color: color(primary-dark);
+    transform: translateY(-0.125rem); // -2px
+  }
+
+  &:focus-visible {
+    @include focus-outline;
+  }
+}
+

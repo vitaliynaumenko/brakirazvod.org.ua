@@ -1,0 +1,115 @@
+// ==========================================================================
+// SCSS Functions - Helper functions to access design tokens
+// ==========================================================================
+
+@use 'sass:map';
+@use 'maps' as *;
+
+/// Get color from colors map
+/// @param {String} $key - Color key
+/// @return {Color} - Color value
+@function color($key) {
+  @if map.has-key($colors, $key) {
+    @return map.get($colors, $key);
+  }
+  @warn "Color '#{$key}' not found in $colors map.";
+  @return null;
+}
+
+/// Get typography value from typography map
+/// @param {String} $key - Typography key
+/// @return {Value} - Typography value
+@function typography($key) {
+  @if map.has-key($typography, $key) {
+    @return map.get($typography, $key);
+  }
+  @warn "Typography '#{$key}' not found in $typography map.";
+  @return null;
+}
+
+/// Get spacing value from spacing map
+/// @param {Number} $key - Spacing key (multiplier of 4px)
+/// @return {Length} - Spacing value
+@function spacing($key) {
+  @if map.has-key($spacing, $key) {
+    @return map.get($spacing, $key);
+  }
+  @warn "Spacing '#{$key}' not found in $spacing map.";
+  @return null;
+}
+
+/// Get border radius from radii map
+/// @param {String} $key - Radius key
+/// @return {Length} - Radius value
+@function radius($key) {
+  @if map.has-key($radii, $key) {
+    @return map.get($radii, $key);
+  }
+  @warn "Radius '#{$key}' not found in $radii map.";
+  @return null;
+}
+
+/// Get shadow from shadows map
+/// @param {String} $key - Shadow key
+/// @return {Shadow} - Shadow value
+@function shadow($key) {
+  @if map.has-key($shadows, $key) {
+    @return map.get($shadows, $key);
+  }
+  @warn "Shadow '#{$key}' not found in $shadows map.";
+  @return null;
+}
+
+/// Get breakpoint from breakpoints map
+/// @param {String} $key - Breakpoint key
+/// @return {Length} - Breakpoint value
+@function breakpoint($key) {
+  @if map.has-key($breakpoints, $key) {
+    @return map.get($breakpoints, $key);
+  }
+  @warn "Breakpoint '#{$key}' not found in $breakpoints map.";
+  @return null;
+}
+
+/// Get z-index from z-index map
+/// @param {String} $key - Z-index key
+/// @return {Number} - Z-index value
+@function z-index($key) {
+  @if map.has-key($z-index, $key) {
+    @return map.get($z-index, $key);
+  }
+  @warn "Z-index '#{$key}' not found in $z-index map.";
+  @return null;
+}
+
+/// Get transition from transitions map
+/// @param {String} $key - Transition key
+/// @return {Transition} - Transition value
+@function transition($key) {
+  @if map.has-key($transitions, $key) {
+    @return map.get($transitions, $key);
+  }
+  @warn "Transition '#{$key}' not found in $transitions map.";
+  @return null;
+}
+
+/// Typography convenience functions (shortcuts to typography map)
+@function font-family($key) {
+  @return typography('font-family-#{$key}');
+}
+
+@function font-size($key) {
+  @return typography('font-size-#{$key}');
+}
+
+@function font-weight($key) {
+  @return typography('font-weight-#{$key}');
+}
+
+@function line-height($key) {
+  @return typography('line-height-#{$key}');
+}
+
+@function letter-spacing($key) {
+  @return typography('letter-spacing-#{$key}');
+}

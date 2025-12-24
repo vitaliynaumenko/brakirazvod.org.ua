@@ -1,0 +1,163 @@
+// ==========================================================================
+// Stats Component - From Figma Frame 1171275127
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.stats {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 21px;
+  margin-bottom: 100px;
+
+  &__header {
+    padding: 0 16px;
+    margin-bottom: 37px;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: font-family(primary);
+    font-style: normal;
+    font-weight: font-weight(semibold);
+    font-size: font-size(3xl);
+    line-height: line-height(normal);
+    letter-spacing: letter-spacing(normal);
+    color: color(text-primary);
+
+    @include respond-to(xl) {
+      font-size: font-size(86);
+    }
+  }
+
+  &__subtitle {
+    font-family: font-family(primary);
+    font-style: normal;
+    font-weight: font-weight(semibold);
+    font-size: font-size(3xl);
+    line-height: line-height(normal);
+    letter-spacing: letter-spacing(normal);
+    color: color(text-primary);
+
+    @include respond-to(xl) {
+      font-size: font-size(86);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+
+    @include respond-to(xl) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 28px 17px;
+    height: 158px;
+    border: 0.4px solid color(gray-400);
+
+    // Mobile borders and border-radius
+    &:nth-child(1) {
+      border-right: 0.4px solid color(gray-400);
+      border-bottom: none;
+      border-radius: 9px 0 0 0;
+    }
+
+    &:nth-child(2) {
+      border-left: none;
+      border-bottom: none;
+      border-radius: 0 9px 0 0;
+    }
+
+    &:nth-child(3) {
+      border-right: 0.4px solid color(gray-400);
+      border-radius: 0 0 0 9px;
+    }
+
+    &:nth-child(4) {
+      border-left: none;
+      border-radius: 0 0 9px 0;
+    }
+
+    @include respond-to(xl) {
+      height: 340px;
+      border: 0.4px solid color(gray-400);
+
+      &:not(:first-child) {
+        border-left: none;
+      }
+
+      &:nth-child(1) {
+        border-right: 0.4px solid color(gray-400);
+        border-bottom: 0.4px solid color(gray-400);
+        border-radius: 9px 0 0 9px;
+      }
+
+      &:nth-child(2) {
+        border-left: none;
+        border-right: 0.4px solid color(gray-400);
+        border-bottom: 0.4px solid color(gray-400);
+        border-radius: 0;
+      }
+
+      &:nth-child(3) {
+        border-left: none;
+        border-right: 0.4px solid color(gray-400);
+        border-bottom: 0.4px solid color(gray-400);
+        border-radius: 0;
+      }
+
+      &:nth-child(4) {
+        border-left: none;
+        border-right: 0.4px solid color(gray-400);
+        border-bottom: 0.4px solid color(gray-400);
+        border-radius: 0 9px 9px 0;
+      }
+    }
+  }
+
+  &__number {
+    font-family: font-family(primary);
+    font-style: normal;
+    font-weight: font-weight(medium);
+    font-size: font-size(59);
+    line-height: line-height(tight);
+    letter-spacing: letter-spacing(normal);
+    text-transform: uppercase;
+    color: color(text-primary);
+
+    @include respond-to(xl) {
+      font-size: font-size(120);
+    }
+
+    &--small {
+      font-size: font-size(56);
+
+      @include respond-to(xl) {
+        font-size: font-size(120);
+      }
+    }
+  }
+
+  &__label {
+    font-family: font-family(primary);
+    font-style: normal;
+    font-weight: font-weight(medium);
+    font-size: font-size(sm);
+    line-height: 1.21em;
+    letter-spacing: letter-spacing(normal);
+    color: color(text-secondary);
+
+    @include respond-to(xl) {
+      font-size: font-size(xl);
+      line-height: 24px;
+    }
+  }
+}

@@ -1,0 +1,337 @@
+// ==========================================================================
+// Services Component - From Figma Frame 04
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.services {
+  position: relative;
+  max-width: 100%;
+  padding: 81px 18px 153px;
+  background-color: color(dark);
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 453px;
+    height: 1279px;
+    background-color: color(bg-overlay);
+    background-image: url('/assets/images/services/services-bg.webp');
+    background-size: cover;
+    z-index: 0;
+  }
+
+  &__header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 29px;
+  }
+
+  &__logo {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    svg{
+      width: 100%;
+      height: 100%;
+    }
+
+    @include respond-to(xl) {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  // &__logo-p,
+  // &__logo-o {
+  //   position: absolute;
+  //   font-family: typography(font-family-script);
+  //   font-size: typography(font-size-lg); // 18px
+  //   font-weight: typography(font-weight-medium);
+  //   line-height: 0.94em;
+  //   letter-spacing: -0.03em;
+  //   color: color(white);
+  // }
+
+  // &__logo-p {
+  //   top: 4px;
+  //   left: 5px;
+  // }
+
+  // &__logo-o {
+  //   top: 11px;
+  //   left: 11px;
+  // }
+
+  &__title {
+    font-family: typography(font-family-primary);
+    font-size: typography(font-size-3xl);
+    font-weight: typography(font-weight-semibold);
+    line-height: typography(line-height-normal);
+    letter-spacing: -0.02em;
+    color: color(white);
+
+    @include respond-to(xl) {
+      font-size: typography(font-size-86);
+      line-height: 110%;
+      font-feature-settings: 'salt' on;
+      max-width: 1200px;
+    }
+  }
+
+  &__list {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 3px;
+    width: 100%;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+    }
+
+    @include respond-to(md) {
+      flex-direction: row;
+    }
+
+    @include respond-to(lg) {
+      flex-direction: row;
+    }
+
+    @include respond-to(xl) {
+      display: grid;
+      grid-template-columns: repeat(20, 1fr); // LCM of 4 and 5 = 20
+      gap: 3px;
+      max-width: 100%;
+
+      // First row: 4 items, each takes 5 columns (20/4 = 5)
+      .services__card:nth-child(1) {
+        grid-column: 1 / 6; // columns 1-5
+        grid-row: 1;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .services__card:nth-child(2) {
+        grid-column: 6 / 11; // columns 6-10
+        grid-row: 1;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .services__card:nth-child(3) {
+        grid-column: 11 / 16; // columns 11-15
+        grid-row: 1;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .services__card:nth-child(4) {
+        grid-column: 16 / 21; // columns 16-20
+        grid-row: 1;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      // Second row: 5 items, each takes 4 columns (20/5 = 4)
+      .services__card:nth-child(5) {
+        grid-column: 1 / 5; // columns 1-4
+        grid-row: 2;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .services__card:nth-child(6) {
+        grid-column: 5 / 9; // columns 5-8
+        grid-row: 2;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .services__card:nth-child(7) {
+        grid-column: 9 / 13; // columns 9-12
+        grid-row: 2;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .services__card:nth-child(8) {
+        grid-column: 13 / 17; // columns 13-16
+        grid-row: 2;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .services__card:nth-child(9) {
+        grid-column: 17 / 21; // columns 17-20
+        grid-row: 2;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 27px;
+    gap: 27px;
+    width: 100%;
+    height: 205px;
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(13.5849px);
+    cursor: pointer;
+    @include transition(background, height);
+
+    @include respond-to(sm) {
+      flex: 0 0 calc(50% - 1.5px);
+      max-width: calc(50% - 1.5px);
+    }
+
+    @include respond-to(md) {
+      flex: 0 0 calc(50% - 1.5px);
+      max-width: calc(50% - 1.5px);
+    }
+
+    @include respond-to(lg) {
+      flex: 0 0 calc(33.333% - 2px);
+      max-width: calc(33.333% - 2px);
+    }
+
+    @include respond-to(xl) {
+      // Grid controls width, no flex needed
+      flex: none;
+      max-width: 100%;
+      gap: 10px;
+    }
+
+    // Mobile: tap to toggle
+    &:active,
+    &.is-active {
+      background: color(white);
+      height: auto;
+
+      .services__card-title {
+        color: color(black);
+      }
+
+      .services__card-desc {
+        color: color(black);
+      }
+
+      .services__card-price,
+      .services__card-btn {
+        display: flex;
+      }
+    }
+
+    // Desktop: hover
+    @include respond-to(xl) {
+      &:hover {
+        background: color(white);
+
+        .services__card-title {
+          color: color(black);
+        }
+
+        .services__card-desc {
+          color: color(black);
+        }
+
+        .services__card-price {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  &__card-title {
+    align-self: stretch;
+    font-family: typography(font-family-primary);
+    font-style: normal;
+    font-weight: typography(font-weight-semibold);
+    font-size: typography(font-size-3xl);
+    line-height: typography(line-height-tight);
+    letter-spacing: -0.02em;
+    color: color(white);
+    @include transition(color);
+
+    @include respond-to(xl) {
+      font-size: 18px;
+    }
+
+    @include respond-to(xxl) {
+      font-size: 21px;
+    }
+
+    @media (min-width: 1542px) {
+      font-size: 31px;
+    }
+  }
+
+  &__card-desc {
+    align-self: stretch;
+    font-family: typography(font-family-primary);
+    font-style: normal;
+    font-weight: typography(font-weight-normal);
+    font-size: 13.5849px;
+    line-height: 160%;
+    letter-spacing: -0.02em;
+    color: color(white);
+    @include transition(color);
+  }
+
+  &__card-price {
+    display: none;
+    gap: 20px;
+    font-family: typography(font-family-primary);
+    font-size: typography(font-size-2xl);
+    font-weight: typography(font-weight-semibold);
+    line-height: typography(line-height-normal);
+    letter-spacing: -0.02em;
+    color: color(black);
+  }
+
+  &__card-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 301px;
+    max-width: 100%;
+    height: 56px;
+    padding: 18px 45px;
+    background-color: color(primary);
+    border: none;
+    border-radius: radius(md);
+    font-family: typography(font-family-primary);
+    font-size: typography(font-size-lg);
+    font-weight: typography(font-weight-semibold);
+    line-height: typography(line-height-tight);
+    letter-spacing: -0.02em;
+    color: color(black);
+    cursor: pointer;
+    @include transition(background-color, transform);
+
+    @include respond-to(xl) {
+      display: none !important;
+    }
+
+    &:hover {
+      background-color: color(primary-dark);
+      transform: translateY(-2px);
+    }
+  }
+}
+

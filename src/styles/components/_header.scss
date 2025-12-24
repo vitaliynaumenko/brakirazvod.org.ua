@@ -1,0 +1,461 @@
+// ==========================================================================
+// Header Component - From Figma Frame 1171275133
+// Width: 393px, padding: 19px 20px, gap: 122px
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+.header {
+  position: fixed;
+  top: 1px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 122px; // Figma exact value
+  width: 100%;
+  margin: 0 auto;
+  padding: 19px spacing(5); // 19px 20px - Figma exact
+  background-color: color(dark-header); // rgba(32, 27, 28, 0.54)
+  z-index: z-index(fixed);
+
+  @include respond-to(xl) {
+    padding: 19px 40px;
+    gap: 20px;
+    align-items: center;
+  }
+
+  @include respond-to(xxxl2) {
+    padding: 19px 80px;
+    gap: 40px;
+  }
+
+  // Logo container
+  &__logo {
+    flex-shrink: 0;
+  }
+
+  &__logo-img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+
+    @include respond-to(xl) {
+      width: 200px;
+      height: 42px;
+    }
+
+    @include respond-to(xxxl2) {
+      width: 290px;
+      height: 60px;
+    }
+  }
+
+  // Right section - Figma: column, align-items: flex-end, gap: 18px
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 18px; // Figma exact value
+
+    @include respond-to(xl) {
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
+
+    @include respond-to(xxxl2) {
+      gap: 36px;
+    }
+  }
+
+  // Social icons - Figma: row, gap: 11px
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 11px; // Figma exact value
+
+    @include respond-to(xl) {
+      order: 2;
+    }
+  }
+
+  // Social icon - Figma: 30x30px
+  &__social {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include transition(opacity);
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &--whatsapp {
+      background-image: url('/assets/icons/whatsapp.svg');
+    }
+
+    &--viber {
+      background-image: url('/assets/icons/viber.svg');
+    }
+
+    &--telegram {
+      background-image: url('/assets/icons/telegram.svg');
+    }
+  }
+
+  // Phone section
+  &__phone {
+    @include button-reset;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    cursor: pointer;
+    @include transition(opacity, transform);
+
+    @include respond-to(xl) {
+      order: 1;
+      cursor: default;
+    }
+
+    &:hover {
+      @media (max-width: 1199px) {
+        opacity: 0.8;
+      }
+    }
+
+    &:active {
+      @media (max-width: 1199px) {
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  // Phone number - Figma: Inter Tight, 16px, 500, #E6EAEF
+  &__phone-number {
+    font-family: typography(font-family-primary);
+    font-size: typography(font-size-md); // 16px
+    font-weight: typography(font-weight-medium);
+    line-height: 1.25em;
+    color: color(text-light-alt);
+  }
+
+  // Phone icon lines - Figma: 26x9px
+  &__phone-icon {
+    width: 26px;
+    height: 9px;
+
+    @include respond-to(xl) {
+      display: none;
+    }
+  }
+
+  // Navigation
+  &__nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding: spacing(20) spacing(6) spacing(8);
+    background: linear-gradient(
+      135deg,
+      rgba(32, 27, 28, 0.98) 0%,
+      rgba(46, 40, 41, 0.98) 50%,
+      rgba(32, 27, 28, 0.98) 100%
+    );
+    @include backdrop-blur(20px);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+    z-index: z-index(modal);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform transition(slow) cubic-bezier(0.4, 0, 0.2, 1),
+      opacity transition(slow) cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @include respond-to(xl) {
+      position: static;
+      width: auto;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0;
+      gap: 16px;
+      background: transparent;
+      box-shadow: none;
+      transform: translateX(0);
+      opacity: 1;
+      overflow: visible;
+    }
+
+    @include respond-to(xxxl2) {
+      gap: 36px;
+    }
+
+    // Mobile menu open state
+    .header--menu-open & {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  &__nav-list {
+    @include list-reset;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: spacing(6);
+    margin-top: spacing(12);
+    width: 100%;
+
+    @include respond-to(xl) {
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    @include respond-to(xxxl2) {
+      gap: 36px;
+    }
+  }
+
+  &__nav-item {
+    display: flex;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity transition(base) cubic-bezier(0.4, 0, 0.2, 1),
+      transform transition(base) cubic-bezier(0.4, 0, 0.2, 1);
+
+    @include respond-to(xl) {
+      width: auto;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    // Stagger animation for mobile menu items
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{$i * 0.05}s;
+      }
+    }
+
+    .header--menu-open & {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &__nav-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: spacing(4) spacing(5);
+    text-align: left;
+    font-family: font-family(primary);
+    font-style: normal;
+    font-weight: font-weight(medium);
+    font-size: font-size(xl);
+    line-height: 1.4em;
+    color: color(white);
+    border-radius: radius(lg);
+    @include transition(background-color, color, transform);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(228, 196, 111, 0.1),
+        transparent
+      );
+      transition: left transition(slow);
+    }
+
+    @include respond-to(xl) {
+      width: auto;
+      padding: 0;
+      text-align: right;
+      font-size: font-size(md);
+      line-height: 1.2em;
+      border-radius: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    @include respond-to(xxxl2) {
+      font-size: font-size(21);
+      line-height: 29px;
+    }
+
+    &:hover {
+      @media (max-width: 1199px) {
+        background-color: rgba(228, 196, 111, 0.05);
+        color: color(primary);
+        transform: translateX(spacing(2));
+
+        &::before {
+          left: 100%;
+        }
+      }
+
+      @include respond-to(xl) {
+        opacity: 0.8;
+        transform: translateX(0);
+      }
+    }
+
+    &:active {
+      @media (max-width: 1199px) {
+        transform: translateX(spacing(1)) scale(0.98);
+      }
+    }
+  }
+
+  // Header button (desktop only)
+  &__btn {
+    @include button-reset;
+    display: none;
+
+    @include respond-to(xl) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      gap: spacing(2);
+      min-width: 130px;
+      height: 42px;
+      border: 1px solid #AF9B67;
+      border-radius: radius(md);
+      font-family: font-family(primary);
+      font-style: normal;
+      font-weight: font-weight(medium);
+      font-size: font-size(md);
+      line-height: 1.2em;
+      text-align: center;
+      color: color(white);
+      transition: all transition(base);
+      cursor: pointer;
+      order: 3;
+      white-space: nowrap;
+
+      @include respond-to(xxxl2) {
+        padding: 16px 19px;
+        gap: spacing(3);
+        min-width: 154px;
+        height: 48px;
+        font-size: font-size(21);
+        line-height: 29px;
+      }
+
+      &:hover {
+        background: rgba(175, 155, 103, 0.1);
+        border-color: color(primary);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  // Close button (mobile only)
+  &__nav-close {
+    @include button-reset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    margin-bottom: spacing(8);
+    border-radius: radius(lg);
+    background-color: rgba(228, 196, 111, 0.1);
+    @include transition(background-color, transform, opacity);
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.8) rotate(-90deg);
+
+    @include respond-to(xl) {
+      display: none;
+    }
+
+    .header--menu-open & {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+      transition-delay: 0.3s;
+    }
+
+    &:hover {
+      background-color: rgba(228, 196, 111, 0.2);
+      transform: scale(1.05) rotate(0deg);
+    }
+
+    &:active {
+      transform: scale(0.95) rotate(0deg);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // Menu overlay backdrop
+  &__menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    @include backdrop-blur(8px);
+    z-index: z-index(modal-backdrop);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity transition(slow) cubic-bezier(0.4, 0, 0.2, 1),
+      visibility transition(slow) cubic-bezier(0.4, 0, 0.2, 1);
+
+    @include respond-to(xl) {
+      display: none;
+    }
+
+    .header--menu-open & {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  // Menu open state
+  &--menu-open {
+    overflow: hidden;
+
+    @include respond-to(xl) {
+      overflow: visible;
+    }
+  }
+}
