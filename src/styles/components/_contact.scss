@@ -6,7 +6,8 @@
 
 .contact {
   max-width: 100%;
-  padding: spacing(9) spacing(5);
+  padding-top: spacing(9);
+  padding-bottom: spacing(9);
 
   &__wrapper {
     display: flex;
@@ -17,6 +18,8 @@
   &__left {
     display: flex;
     flex-direction: column;
+    max-width: 350px;
+    margin: 0 auto;
   }
 
   &__right {
@@ -28,47 +31,19 @@
     display: none;
   }
 
-  &__logo {
-    display: inline-block;
-    position: relative;
-    width: 44px;
-    height: 44px;
-    border: 0.73px solid color(primary-darker);
-    border-radius: radius(base);
-  }
-
-  &__logo-p,
-  &__logo-o {
-    position: absolute;
-    font-family: typography(font-family-script);
-    font-size: typography(font-size-24); // 24px - Figma exact
-    font-weight: typography(font-weight-medium);
-    line-height: 0.94em;
-    letter-spacing: -0.03em;
-    color: color(primary-darker);
-  }
-
-  &__logo-p {
-    top: 6px;
-    left: 7px;
-  }
-
-  &__logo-o {
-    top: 15px;
-    left: 15px;
-  }
 
   &__title {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: spacing(1);
+  
     margin-bottom: spacing(4);
     font-family: typography(font-family-primary);
     font-size: typography(font-size-6xl); // 44px
     font-weight: typography(font-weight-semibold);
     line-height: typography(line-height-normal);
     color: color(black);
+  }
+
+  &__icon {
+    display: inline-block;
   }
 
   &__hint {
@@ -157,7 +132,7 @@
 
     &__title {
       display: block;
-      font-size: 82px;
+      font-size: 72px;
       margin-bottom: 75px;
     }
 

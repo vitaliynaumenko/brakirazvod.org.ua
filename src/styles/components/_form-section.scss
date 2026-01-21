@@ -6,68 +6,46 @@
 
 .form-section {
   position: relative;
-  max-width: calc(100% - 40px);
   margin: -50px auto 105px;
-  padding: 41px 26px;
-  background-color: color(gray-100);
   border-radius: radius(xl);
-
-  @include respond-to(xl) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 35px 25px;
-    gap: 20px;
-    width: 100%;
-    max-width: calc(100% - 40px);
-    min-height: 150px;
-    height: auto;
-    border-radius: radius(2xl);
-  }
-
-  @include respond-to(xxxxl) {
-    padding: 44px 31px;
-    gap: 26px;
-    min-height: 188px;
-  }
 
   &__title {
     margin-bottom: 26px;
-    font-family: font-family(primary);
-    font-size: font-size(3xl);
-    font-weight: font-weight(semibold);
-    line-height: line-height(tight);
-    letter-spacing: letter-spacing(normal);
+    font-family: typography(font-family-primary);
+    font-size: typography(font-size-3xl);
+    font-weight: typography(font-weight-semibold);
+    line-height: typography(line-height-tight);
+    letter-spacing: typography(letter-spacing-normal);
     color: color(text-primary);
 
     @include respond-to(xl) {
-      width: 280px;
-      height: auto;
+      width: 190px;
       margin-bottom: 0;
-      font-size: font-size(2xl);
-      line-height: line-height(tight);
-      flex-shrink: 0;
-      order: 0;
+      font-size: typography(font-size-lg);
+      line-height: 1em;
     }
 
     @include respond-to(xxxxl) {
       width: 351px;
-      font-size: font-size(3xl);
+      font-size: typography(font-size-3xl);
     }
   }
 
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: spacing(5);
+    padding: 45px 25px;
+    background: color(gray-100);
+    border-radius: radius(2xl);
 
     @include respond-to(xl) {
       flex-direction: row;
       align-items: center;
-      padding: 0;
-      gap: 20px;
+      padding: 70px 31px;
+      gap: 26px;
       flex: 1;
-      height: 80px;
+      height: spacing(20);
       order: 1;
     }
 
@@ -81,14 +59,14 @@
 
   &__input {
     width: 100%;
-    padding: 24px 60px;
+    padding: spacing(6) 60px;
     background-color: color(white);
     border: 1.7px solid color(gray-400);
     border-radius: radius(2xl);
-    font-family: font-family(primary);
-    font-size: font-size(17);
-    font-weight: font-weight(semibold);
-    line-height: line-height(normal);
+    font-family: typography(font-family-primary);
+    font-size: typography(font-size-17);
+    font-weight: typography(font-weight-semibold);
+    line-height: typography(line-height-normal);
     color: color(text-primary);
     @include transition(border-color);
 
@@ -103,13 +81,14 @@
 
     @include respond-to(xl) {
       box-sizing: border-box;
-      padding: 30px 40px;
+      width: 100%;
+      padding: 0 spacing(10);
       flex: 1;
-      min-width: 280px;
-      height: 80px;
+      max-width: 280px;
+      height: spacing(20);
       border: 2px solid color(gray-400);
-      border-radius: 26px;
-      font-size: font-size(md);
+      border-radius: radius(3xl);
+      font-size: typography(font-size-md);
 
       &:first-child {
         order: 1;
@@ -126,7 +105,7 @@
       flex: none;
       height: 100px;
       border-radius: 30px;
-      font-size: font-size(xl);
+      font-size: typography(font-size-xl);
 
       &:first-child {
         width: 410px;
@@ -136,14 +115,14 @@
 
   &__submit {
     width: 100%;
-    padding: 24px 60px;
+    padding: spacing(6) 60px;
     background-color: color(black);
     border: none;
     border-radius: radius(2xl);
-    font-family: font-family(primary);
-    font-size: font-size(17);
-    font-weight: font-weight(semibold);
-    line-height: line-height(normal);
+    font-family: typography(font-family-primary);
+    font-size: typography(font-size-17);
+    font-weight: typography(font-weight-semibold);
+    line-height: typography(line-height-normal);
     color: color(btn-text-light);
     cursor: pointer;
     @include transition(background-color, transform);
@@ -158,24 +137,25 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding: 30px 40px;
-      gap: 8px;
+      width: 100%;
+      padding: 0 spacing(10);
+      gap: spacing(2);
       flex: 1;
-      min-width: 280px;
-      height: 80px;
-      border-radius: 26px;
-      font-size: font-size(md);
+      max-width: 280px;
+      height: spacing(20);
+      border-radius: radius(3xl);
+      font-size: typography(font-size-md);
       order: 2;
     }
 
     @include respond-to(xxxxl) {
       padding: 40px 70px;
-      gap: 10px;
+      gap: spacing(2);
       width: 411px;
       flex: none;
       height: 100px;
       border-radius: 30px;
-      font-size: font-size(xl);
+      font-size: typography(font-size-xl);
     }
   }
 }
@@ -185,19 +165,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 20px 0 7.5rem; // 20px 0 120px
+  gap: spacing(3);
+  width: 100%;
+  max-width: 350px;
+  padding: spacing(5) 0 7.5rem;
   margin: 0 auto;
 
   &__input {
-    width: 351px;
-    max-width: 100%;
-    padding: 34px 60px;
+    width: 100%;
+    padding: 34px 0 34px typography(font-size-3xl); // 28px
     background-color: color(white);
     border: 1.7px solid color(gray-400);
-    border-radius: 26px;
+    border-radius: radius(3xl);
     font-family: typography(font-family-primary);
-    font-size: typography(font-size-17); // 17px - Figma exact
+    font-size: typography(font-size-17);
     font-weight: typography(font-weight-semibold);
     line-height: typography(line-height-normal);
     color: color(black);
@@ -214,14 +195,13 @@
   }
 
   &__submit {
-    width: 351px;
-    max-width: 100%;
+    width: 100%;
     padding: 34px 60px;
     background-color: color(black);
     border: none;
-    border-radius: 26px;
+    border-radius: radius(3xl);
     font-family: typography(font-family-primary);
-    font-size: typography(font-size-17); // 17px - Figma exact
+    font-size: typography(font-size-17);
     font-weight: typography(font-weight-semibold);
     line-height: typography(line-height-normal);
     color: color(btn-text-light);
@@ -238,6 +218,7 @@
     padding: 0;
     margin: 0;
     gap: spacing(4);
+    max-width: none;
 
     &__input {
       width: 100%;
@@ -251,4 +232,3 @@
     }
   }
 }
-

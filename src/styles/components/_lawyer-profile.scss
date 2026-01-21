@@ -8,12 +8,12 @@
 .lawyer {
   position: relative;
   max-width: 100%;
-  padding: spacing(20) spacing(5) spacing(8);
+  padding-top: spacing(20);
+  padding-bottom: spacing(8);
 
   &__image {
     width: 100%;
     max-width: 350px;
-    // height: 368px;
     margin: 0 auto spacing(8);
     border-radius: radius(2xl);
     overflow: hidden;
@@ -27,7 +27,9 @@
 
   &__right {
     @include flex-column;
+    align-items: center;
     gap: spacing(8);
+    margin: 0 auto;
   }
 
   &__signature {
@@ -45,24 +47,29 @@
   &__content {
     @include flex-column;
     gap: spacing(8);
+    max-width: 350px;
   }
 
   &__name {
     font-family: 'Inter Tight', typography(font-family-primary);
     font-style: normal;
-    font-weight: 500;
-    font-size: 60px;
+    font-weight: typography(font-weight-medium);
+    font-size: typography(font-size-5xl);
     line-height: .6;
-    letter-spacing: -0.02em;
-    color: #151515;
+    letter-spacing: typography(letter-spacing-normal);
+    color: color(black);
     /* leading-trim and text-edge are draft CSS properties.
        Read more: https://drafts.csswg.org/css-inline-3/#leading-trim */
     // leading-trim: both;
     // text-edge: cap;
   }
 
+  &__name-text {
+    line-height: 0.9;
+  }
+
   &__experience {
-    font-size: 28px;
+    font-size: typography(font-size-3xl);
   }
 
 
@@ -73,7 +80,7 @@
 
   &__quote-mark {
     position: absolute;
-    top: 4px;
+    top: spacing(1);
     left: 0;
     width: 23px;
     height: 21px;
@@ -90,49 +97,64 @@
     line-height: 1.36;
     letter-spacing: typography(letter-spacing-normal);
     text-align: left;
-    text-indent: 66px;
     color: color(text-primary);
   }
-  @include respond-to(lg) {
-    display: flex;
-    flex-direction: row;
-    gap: spacing(8);
 
+  &__linkedin {
+    display: none;
+  }
+
+  @include respond-to(lg) {
     &__right {
       padding: 60px;
-      border: 1px solid #D0D0D0;
+      border: 1px solid color(gray-300);
       border-left: none;
     }
   }
 
   @include respond-to(xl) {
-   
-    padding: spacing(20) spacing(5) spacing(8);
+    padding-top: spacing(20);
+    padding-bottom: spacing(8);
+
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+    }
 
     &__image {
+      flex: 0 0 calc(700 / 1720 * 100%); // ~40.7%
+      max-width: 700px;
       margin: 0;
       flex-shrink: 0;
-      max-width: 700px;
       max-height: 725px;
       height: auto;
     }
 
     &__right {
-      flex: 1;
+      flex: 1 1 calc(1000 / 1720 * 100%); // ~58.1%
+      max-width: 1000px;
       margin: 0;
-    
+      min-width: 0; // Дозволяє зменшуватися
+      align-items: flex-start; // Контент по лівій стороні
     }
 
     &__name {
       margin-bottom: 60px;
     }
 
+    &__experience {
+      font-size: 26px;
+    }
+
     &__quote-text {
       margin-bottom: 60px;
+      margin-left: 25px;
     }
 
     &__signature {
       margin: 0 0 60px 0;
+      margin-left: 0;
     }
 
     &__linkedin {
@@ -145,17 +167,17 @@
     &__linkedin-link {
       font-family: 'Inter Tight', typography(font-family-primary);
       font-style: normal;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 100%;
-      letter-spacing: -0.02em;
+      font-weight: typography(font-weight-normal);
+      font-size: typography(font-size-24);
+      line-height: typography(line-height-tight);
+      letter-spacing: typography(letter-spacing-normal);
       font-feature-settings: 'salt' on;
-      color: #000000;
+      color: color(black);
     }
 
     &__linkedin-link {
       text-decoration: none;
-      color: #000000;
+      color: color(black);
 
       &:hover {
         text-decoration: underline;
@@ -163,4 +185,3 @@
     }
   }
 }
-

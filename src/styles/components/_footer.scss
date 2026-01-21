@@ -9,30 +9,33 @@
   padding: 65px 20px;
   background-color: color(dark-alt);
 
-  @include respond-to(lg) {
-    padding: 65px 0;
+  @include respond-to(xl) {
+    padding-top: 65px;
+    padding-bottom: 65px;
+    padding-left: 95px;
+    padding-right: 95px;
   }
 
   &__container {
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: spacing(12);
-      padding: 0 spacing(6);
-      max-width: 1440px;
+      padding: 0;
+      max-width: 1720px;
       margin: 0 auto;
     }
   }
 
   &__column-left {
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       display: flex;
       flex-direction: column;
     }
   }
 
   &__column-right {
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       display: flex;
       flex-direction: column;
     }
@@ -45,7 +48,7 @@
     gap: 9px;
     padding: 0;
 
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       align-items: flex-start;
     }
   }
@@ -96,7 +99,7 @@
     font-family: typography(font-family-secondary);
     font-style: normal;
     font-weight: typography(font-weight-normal);
-    font-size: typography(font-size-3xl); // 28px
+    font-size: 22px;
     line-height: 31px;
     letter-spacing: -1px;
     color: color(white);
@@ -106,7 +109,7 @@
     font-family: typography(font-family-secondary);
     font-style: normal;
     font-weight: typography(font-weight-semibold);
-    font-size: typography(font-size-3xl); // 28px
+    font-size: 22px;
     line-height: 31px;
     letter-spacing: 1px;
     color: color(white);
@@ -119,7 +122,7 @@
     width: 100%;
     margin-bottom: 45px;
 
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       margin-bottom: 200px;
       max-width: 350px;
     }
@@ -129,9 +132,13 @@
     font-family: typography(font-family-primary);
     font-style: normal;
     font-weight: typography(font-weight-medium);
-    font-size: typography(font-size-19); // 19px
+    font-size: 16px;
     line-height: 25px;
     color: color(text-light-alt);
+
+    @media (min-width: 390px) {
+      font-size: typography(font-size-19); // 19px
+    }
   }
 
   &__phone-icon {
@@ -180,7 +187,7 @@
     margin: 0 auto 25px;
     background-color: color(divider-dark);
 
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       display: none;
     }
   }
@@ -190,7 +197,7 @@
     margin-bottom: 45px;
     max-width: 350px;
 
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       padding: 0;
       margin-top: auto;
       margin-bottom: 0;
@@ -209,7 +216,12 @@
 
   &__newsletter-form {
     display: flex;
+    flex-wrap: wrap;
     gap: 2px;
+
+    @media (min-width: 360px) {
+      flex-wrap: nowrap;
+    }
   }
 
   &__newsletter-input {
@@ -234,6 +246,7 @@
   }
 
   &__newsletter-btn {
+    width: 100%;
     padding: 14px 21px;
     background-color: color(primary);
     border: none;
@@ -245,6 +258,10 @@
     color: color(black);
     cursor: pointer;
     @include transition(background-color);
+
+    @media (min-width: 360px) {
+      width: auto;
+    }
 
     &:hover {
       background-color: color(primary-dark);
@@ -260,7 +277,7 @@
     line-height: typography(line-height-relaxed);
     color: color(white);
 
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       padding: 0;
     }
   }
@@ -272,7 +289,7 @@
     padding: 0;
     margin-bottom: 60px;
 
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       flex-direction: row;
       justify-content: space-between;
     }
@@ -307,7 +324,7 @@
     padding: 0;
     margin-bottom: spacing(20);
 
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       display: none;
     }
   }
@@ -333,8 +350,8 @@
   &__seo-toggle {
     @include button-reset;
     position: absolute;
-    bottom: spacing(2);
-    right: spacing(6);
+    bottom: 0;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -369,11 +386,8 @@
     flex-direction: column;
     padding: 0 0 spacing(12);
 
-    @include respond-to(lg) {
-      margin-top: auto;
-    }
-
     @include respond-to(xl) {
+      margin-top: auto;
       padding: 0;
     }
   }
@@ -383,10 +397,10 @@
     flex-direction: column;
     gap: spacing(6);
 
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: flex-start;
+      align-items: flex-end;
     }
   }
 
@@ -400,8 +414,9 @@
     text-decoration: underline;
     @include transition(color);
 
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       order: 2;
+      font-size: typography(font-size-base);
     }
 
     &--accent {
@@ -421,9 +436,9 @@
     letter-spacing: typography(letter-spacing-tight);
     color: color(white);
 
-    @include respond-to(lg) {
+    @include respond-to(xl) {
       order: 1;
+      font-size: typography(font-size-base);
     }
   }
 }
-

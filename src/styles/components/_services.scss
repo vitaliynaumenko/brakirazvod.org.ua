@@ -7,7 +7,8 @@
 .services {
   position: relative;
   max-width: 100%;
-  padding: 81px 18px 153px;
+  padding-top: 81px;
+  padding-bottom: 153px;
   background-color: color(dark);
 
   &__bg {
@@ -80,10 +81,14 @@
     color: color(white);
 
     @include respond-to(xl) {
-      font-size: typography(font-size-86);
+      font-size: 80px;
       line-height: 110%;
       font-feature-settings: 'salt' on;
       max-width: 1200px;
+    }
+
+    @include respond-to(xxl) {
+      font-size: typography(font-size-86);
     }
   }
 
@@ -269,7 +274,7 @@
     @include transition(color);
 
     @include respond-to(xl) {
-      font-size: 18px;
+      font-size: 14px;
     }
 
     @include respond-to(xxl) {
@@ -291,6 +296,14 @@
     letter-spacing: -0.02em;
     color: color(white);
     @include transition(color);
+
+    @include respond-to(xl) {
+      font-size: 11px;
+    }
+
+    @include respond-to(xxl) {
+      font-size: 13.5849px;
+    }
   }
 
   &__card-price {

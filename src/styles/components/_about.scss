@@ -11,48 +11,37 @@
 
 .abroad__card {
   width: 100%;
-  max-width: 22.0625rem; // 353px
+  max-width: 355px;
   margin: 0 auto;
-  padding: 2.5rem 1.625rem 1.25rem; // 40px 26px 20px
+  padding: spacing(10) 26px spacing(5); // 40px 26px 20px
   background-color: color(gray-100);
   border-radius: radius(xl);
 
   @include respond-to(sm) {
-    max-width: 24rem; // 384px
-    padding: 2.5rem 1.75rem 1.25rem; // 40px 28px 20px
+    padding: spacing(10) 28px spacing(5); // 40px 28px 20px
   }
 
   @include respond-to(md) {
-    max-width: 28rem; // 448px
-    padding: 2.75rem 2rem 1.5rem; // 44px 32px 24px
+    padding: spacing(11) spacing(8) spacing(6); // 44px 32px 24px
   }
 
   @include respond-to(lg) {
-    max-width: 35rem; // 560px
-    padding: 2.75rem 2.25rem 1.5rem; // 44px 36px 24px
+    padding: spacing(11) 36px spacing(6); // 44px 36px 24px
   }
 
   @include respond-to(xl) {
     display: flex;
     flex-direction: row;
     align-items: center;
-    max-width: calc(100% - 40px);
     width: 100%;
-    padding: 2.75rem 1.9375rem; // 44px 31px
-    gap: 1.625rem; // 26px
+    max-width: none;
+    margin: 0;
+    padding: spacing(11) 31px; // 44px 31px
     min-height: 9rem; // 144px
   }
 
   @include respond-to(xxl) {
-    max-width: 87.5rem; // 1400px
-  }
-
-  @include respond-to(xxxl) {
-    max-width: 100rem; // 1600px
-  }
-
-  @include respond-to(xxxxl) {
-    max-width: 108.5625rem; // 1737px
+    gap: 1.6rem; // 26px
   }
 }
 
@@ -69,7 +58,8 @@
   @include respond-to(xl) {
     margin-bottom: 0;
     text-align: left;
-    max-width: 14.375rem; // 230px
+    max-width: 10rem;
+    font-size: typography(font-size-19);
   }
 }
 
@@ -103,7 +93,6 @@
 
 .abroad__list {
   margin-bottom: 2rem; // 39px
- 
 
   @include respond-to(sm) {
     margin-bottom: 2.5rem; // 40px
@@ -122,7 +111,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    gap: spacing(6);
+    gap: spacing(4);
     margin-bottom: 0;
     flex: 1;
     text-align: left;
@@ -153,6 +142,7 @@
   @include respond-to(xl) {
     padding: 0;
     white-space: nowrap;
+    font-size: typography(font-size-17);
   }
 }
 
@@ -160,7 +150,7 @@
   @include flex-center;
   width: 100%;
   max-width: 18.8125rem; // 301px
-  height: 3.5rem; // 56px
+  height: spacing(14); // 56px
   padding: 1.125rem 2.8125rem; // 18px 45px
   margin: 0 auto;
   background-color: color(primary);
@@ -204,4 +194,3 @@
     @include focus-outline;
   }
 }
-

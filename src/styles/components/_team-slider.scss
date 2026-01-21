@@ -5,8 +5,15 @@
 @use '../abstracts' as *;
 
 .team-slider {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: spacing(6);
+    position: relative;
+  }
+
   position: relative;
-  padding: 0 20px;
+  padding: 0 spacing(5);
 
   @include respond-to(xl) {
     padding: 0;
@@ -17,15 +24,19 @@
     }
   }
 
-
   &__card {
     position: relative;
     width: 100%;
     height: 346px;
     border-radius: radius(md);
+
     @include respond-to(xl) {
-      height: 620px;
+      height: 295px;
       border-radius: radius(2xl);
+    }
+
+    @include respond-to(xxl) {
+      height: 620px;
     }
 
     &:hover {
@@ -59,7 +70,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 40px 50px;
+    padding: spacing(10) 50px;
     background: linear-gradient(0deg, rgba(color(black), 0.6), rgba(color(black), 0.6));
     backdrop-filter: blur(30px);
     border-radius: radius(md);
@@ -68,7 +79,7 @@
     @include transition(opacity, visibility);
 
     @include respond-to(xl) {
-      border-radius: 20px;
+      border-radius: radius(2xl);
     }
   }
 
@@ -76,61 +87,67 @@
     position: relative;
     width: 60px;
     height: 60px;
-
   }
-
 
   &__name {
     width: 100%;
     max-width: 100%;
-    font-family: font-family(primary);
+    font-family: typography(font-family-primary);
     font-style: normal;
-    font-weight: font-weight(semibold);
-    font-size: font-size(6xl);
+    font-weight: typography(font-weight-semibold);
+    font-size: typography(font-size-6xl);
     line-height: 1;
-    letter-spacing: letter-spacing(tight);
+    letter-spacing: typography(letter-spacing-tight);
     text-transform: uppercase;
     color: color(gray-200);
     text-align: left;
   }
 
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: spacing(4);
+  }
+
   &__nav-btn {
     @include button-reset;
-    position: absolute;
-    bottom: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 44px;
     height: 44px;
     background: transparent;
     border: 0.7px solid color(primary);
     border-radius: radius(md);
     cursor: pointer;
-    z-index: 10;
+    flex-shrink: 0;
+    @include transition(background-color, transform);
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 12px;
-      height: 12px;
-      border-top: 2px solid color(primary);
-      border-right: 2px solid color(primary);
+    svg {
+      width: 17px;
+      height: 17px;
+      transition: stroke transition(base);
+
+      path {
+        stroke: color(primary);
+      }
     }
 
     &:hover {
       background: rgba(color(primary), 0.9);
 
-      &::after {
-        border-top-color: color(black);
-        border-right-color: color(black);
+      svg path {
+        stroke: color(black);
       }
     }
 
     &:active {
-      &::after {
-        border-top-color: color(black);
-        border-right-color: color(black);
+      transform: scale(0.95);
+
+      svg path {
+        stroke: color(black);
       }
     }
 
@@ -138,28 +155,10 @@
       @include focus-outline(color(primary));
     }
 
-    &--prev {
-      left: 50%;
-      transform: translateX(calc(-100% - 8px));
-
-      &::after {
-        transform: translate(-40%, -50%) rotate(-135deg);
-      }
-    }
-
-    &--next {
-      left: 50%;
-      transform: translateX(8px);
-
-      &::after {
-        transform: translate(-60%, -50%) rotate(45deg);
-      }
-    }
-
     &.swiper-button-disabled {
       opacity: 0.3;
       cursor: not-allowed;
+      pointer-events: none;
     }
   }
 }
-

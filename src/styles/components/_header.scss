@@ -13,10 +13,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 122px; // Figma exact value
   width: 100%;
   margin: 0 auto;
-  padding: 19px spacing(5); // 19px 20px - Figma exact
+  padding: 10px 20px;
   background-color: color(dark-header); // rgba(32, 27, 28, 0.54)
   z-index: z-index(fixed);
 

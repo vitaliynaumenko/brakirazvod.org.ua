@@ -1,0 +1,24 @@
+// ==========================================================================
+// Section Layout Utilities
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+// Section with horizontal padding
+.section-padded {
+  padding-left: 18px;
+  padding-right: 18px;
+
+  @include respond-to(xl) {
+    padding-left: 95px;
+    padding-right: 95px;
+  }
+}
+
+// Inner container for content centering
+.container-inner {
+  @include respond-to(xl) {
+    max-width: 1720px;
+    margin: 0 auto;
+  }
+}
