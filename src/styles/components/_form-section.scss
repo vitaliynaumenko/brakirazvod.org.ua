@@ -42,6 +42,7 @@
     @include respond-to(xl) {
       flex-direction: row;
       align-items: center;
+      justify-content: space-between;
       padding: 70px 31px;
       gap: 26px;
       flex: 1;

@@ -69,17 +69,9 @@
       font-size: typography(font-size-4xl);
     }
 
-    @include respond-to(xl) {
+    @media (min-width: 1200px) and (max-width: 1554px) {
       font-size: 45px;
       max-width: 940px;
-    }
-
-    @include respond-to(xxl) {
-      font-size: 68px;
-      max-width: 940px;
-      margin: 0;
-      padding: 0;
-      flex: 0 0 auto;
     }
 
     @media (min-width: 1720px) {
@@ -108,14 +100,8 @@
       font-size: typography(font-size-xl);
     }
 
-    @include respond-to(xl) {
+    @media (min-width: 1200px) and (max-width: 1554px) {
       font-size: typography(font-size-2xl);
-    }
-
-    @include respond-to(xxl) {
-      font-size: 26px;
-      flex: 0 0 auto;
-      margin-left: auto;
     }
   }
 }
