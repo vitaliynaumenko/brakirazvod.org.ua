@@ -74,6 +74,10 @@ function initSliders(): void {
           centeredSlides: false,
         },
       },
+    }, {
+      onInit: (swiper) => {
+        initTeamSliderCursor(swiper);
+      },
     });
 
     (window as any).teamSlider = teamSlider;
@@ -135,6 +139,103 @@ function initSliders(): void {
   //   },
   // });
 }
+
+/**
+ * Ініціалізація кастомного курсора для team-slider
+ */
+function initTeamSliderCursor(swiper: any): void {
+  const cursor = document.querySelector<HTMLElement>('.team-slider__cursor');
+  const sliderContainer = swiper.el as HTMLElement;
+  if (!cursor || !sliderContainer) return;
+
+  // Перевіряємо, чи це десктоп
+  const isDesktop = window.innerWidth >= 1200;
+  if (!isDesktop) {
+    cursor.style.opacity = '0';
+    cursor.style.visibility = 'hidden';
+    return;
+  }
+
+  // Спочатку приховуємо курсор
+  cursor.style.opacity = '0';
+  cursor.style.visibility = 'hidden';
+
+  // Обробник входу миші в блок
+  const handleMouseEnter = (e: MouseEvent) => {
+    cursor.style.opacity = '1';
+    cursor.style.visibility = 'visible';
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+  };
+
+  // Обробник руху миші
+  const handleMouseMove = (e: MouseEvent) => {
+    const rect = sliderContainer.getBoundingClientRect();
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    // Перевіряємо, чи миша всередині блоку
+    if (
+      mouseX >= rect.left &&
+      mouseX <= rect.right &&
+      mouseY >= rect.top &&
+      mouseY <= rect.bottom
+    ) {
+      // Оновлюємо позицію курсора
+      cursor.style.left = `${mouseX}px`;
+      cursor.style.top = `${mouseY}px`;
+      cursor.style.opacity = '1';
+      cursor.style.visibility = 'visible';
+
+      // Додаємо активний стан при наведенні
+      cursor.classList.add('team-slider__cursor--active');
+    } else {
+      // Приховуємо курсор, коли миша поза блоком
+      cursor.style.opacity = '0';
+      cursor.style.visibility = 'hidden';
+      cursor.classList.remove('team-slider__cursor--active');
+    }
+  };
+
+  // Обробник виходу миші з блоку
+  const handleMouseLeave = () => {
+    cursor.style.opacity = '0';
+    cursor.style.visibility = 'hidden';
+    cursor.classList.remove('team-slider__cursor--active');
+  };
+
+  // Обробник кліку для навігації
+  const handleClick = (e: MouseEvent) => {
+    const rect = sliderContainer.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const clickX = e.clientX;
+
+    // Ліва частина - попередній слайд, права - наступний
+    if (clickX < centerX) {
+      swiper.slidePrev();
+    } else {
+      swiper.slideNext();
+    }
+  };
+
+  // Додаємо обробники
+  sliderContainer.addEventListener('mouseenter', handleMouseEnter);
+  sliderContainer.addEventListener('mousemove', handleMouseMove);
+  sliderContainer.addEventListener('mouseleave', handleMouseLeave);
+  sliderContainer.addEventListener('click', handleClick);
+
+  // Оновлюємо при resize
+  const handleResize = () => {
+    const isDesktopNow = window.innerWidth >= 1200;
+    if (!isDesktopNow) {
+      cursor.style.opacity = '0';
+      cursor.style.visibility = 'hidden';
+    }
+  };
+
+  window.addEventListener('resize', handleResize);
+}
+
 
 /**
  * Ініціалізація SEO секції з розкриттям/згортанням
